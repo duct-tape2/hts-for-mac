@@ -1,0 +1,38 @@
+.market-calculator {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  flex-direction: column;
+  overflow: auto;
+  background: #101925;
+  color: #e5e7eb;
+  font-size: 12px;
+}
+.market-calculator-title,
+.market-calculator-inputs,
+.market-calculator-fx { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; padding: 5px 7px; border-bottom: 1px solid #263448; }
+.market-calculator-title strong { color: #f5f1e6; font-size: 12px; }
+.market-calculator-title span { overflow: hidden; color: #aab5c5; text-overflow: ellipsis; white-space: nowrap; font-size: 10px; }
+.market-calculator-title button { margin-left: auto; }
+.market-calculator button { min-height: 22px; border: 1px solid #4b5a70; border-radius: 0; background: #1b2a3d; color: #e5e7eb; padding: 1px 7px; font-size: 11px; }
+.market-calculator button:hover { border-color: #e5ad39; }
+.market-calculator-disclosure { margin: 0; border-bottom: 1px solid #263448; padding: 3px 7px; color: #aab5c5; font-size: 10px; }
+.market-calculator-inputs label,
+.market-calculator-fx label { display: inline-flex; align-items: center; gap: 3px; color: #c4ccda; white-space: nowrap; }
+.market-calculator-inputs input,
+.market-calculator-inputs select,
+.market-calculator-fx input { box-sizing: border-box; min-height: 23px; width: 92px; border: 1px solid #4b5a70; border-radius: 0; background: #0b1320; color: #f5f1e6; padding: 1px 4px; font-family: Consolas, monospace; font-size: 11px; }
+.market-calculator-inputs select { width: 64px; }
+.market-calculator-fx { padding-top: 3px; padding-bottom: 3px; color: #aab5c5; font-size: 10px; }
+.market-calculator-fx span { white-space: nowrap; }
+.market-calculator-error { margin: 6px 7px; color: #ff8f8b; }
+.market-calculator-results { display: grid; grid-template-columns: repeat(2, minmax(150px, 1fr)); margin: 7px; border-top: 1px solid #334155; border-left: 1px solid #334155; font-family: Consolas, "D2Coding", monospace; font-size: 11px; }
+.market-calculator-results div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: 29px; border-right: 1px solid #334155; border-bottom: 1px solid #334155; }
+.market-calculator-results div:nth-child(4n + 1), .market-calculator-results div:nth-child(4n + 2) { background: #142133; }
+.market-calculator-results dt, .market-calculator-results dd { margin: 0; padding: 6px; }
+.market-calculator-results dt { color: #aab5c5; border-right: 1px solid #334155; }
+.market-calculator-results dd { text-align: right; color: #f5f1e6; }
+.market-calculator-results .up { color: #ff7875; }
+.market-calculator-results .down { color: #78a9ff; }
+@media (max-width: 540px) { .market-calculator-results { grid-template-columns: 1fr; } .market-calculator-title span { display: none; } }

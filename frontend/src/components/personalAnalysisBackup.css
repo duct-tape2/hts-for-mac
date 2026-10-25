@@ -1,0 +1,20 @@
+.personal-analysis-backup { display: flex; min-width: 0; min-height: 0; height: 100%; flex-direction: column; overflow: hidden; background: #101925; color: #e5e7eb; font-size: 11px; }
+.personal-analysis-backup-title, .personal-analysis-backup-actions, .personal-analysis-backup-search, .personal-analysis-backup-preview { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; flex-shrink: 0; border-bottom: 1px solid #263448; padding: 5px 7px; }
+.personal-analysis-backup-title strong { color: #f5f1e6; font-size: 12px; }
+.personal-analysis-backup-title span { color: #e5ad39; font-family: Consolas, monospace; font-size: 10px; }
+.personal-analysis-backup button { min-height: 22px; border: 1px solid #4b5a70; border-radius: 0; background: #1b2a3d; color: #e5e7eb; padding: 1px 7px; font-size: 11px; }
+.personal-analysis-backup button:hover { border-color: #e5ad39; }
+.personal-analysis-backup-actions label, .personal-analysis-backup-search label { display: inline-flex; align-items: center; gap: 4px; color: #c4ccda; }
+.personal-analysis-backup-actions input[type="file"] { max-width: 160px; color: #aab5c5; font-size: 10px; }
+.personal-analysis-backup-disclosure, .personal-analysis-backup-status { margin: 0; border-bottom: 1px solid #263448; padding: 4px 7px; color: #aab5c5; font-size: 10px; line-height: 1.4; }
+.personal-analysis-backup-status { color: #c4ccda; }
+.personal-analysis-backup-preview { background: #17273a; color: #d5dde8; }
+.personal-analysis-backup-preview strong { color: #e5ad39; }
+.personal-analysis-backup-search input { min-height: 22px; width: 150px; border: 1px solid #4b5a70; border-radius: 0; background: #0b1320; color: #f5f1e6; padding: 1px 4px; font-size: 11px; }
+.personal-analysis-backup-search span { margin-left: auto; color: #aab5c5; font-family: Consolas, monospace; }
+.personal-analysis-backup-list { min-height: 0; flex: 1; overflow: auto; }
+.personal-analysis-backup-list article { border-bottom: 1px solid #263448; padding: 5px 7px; }
+.personal-analysis-backup-list article:nth-child(even) { background: #142133; }
+.personal-analysis-backup-list header { color: #e5ad39; font-family: Consolas, monospace; font-size: 10px; }
+.personal-analysis-backup-list p { margin: 3px 0 0; color: #e5e7eb; white-space: pre-wrap; word-break: break-word; line-height: 1.45; }
+.personal-analysis-backup-list > p { margin: 9px; color: #aab5c5; }

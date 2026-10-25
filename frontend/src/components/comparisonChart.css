@@ -1,0 +1,22 @@
+.comparison-chart { display: flex; min-width: 0; min-height: 0; height: 100%; flex: 1; flex-direction: column; overflow: hidden; border: 1px solid #949494; background: #d8d8d8; color: #171717; font-family: Consolas, "D2Coding", "Apple SD Gothic Neo", monospace; font-size: 10px; }
+.comparison-chart-toolbar, .comparison-chart-legend, .comparison-chart-scope, .comparison-chart-notes, .comparison-chart footer { flex: 0 0 auto; margin: 0; border-bottom: 1px solid #949494; padding: 3px 5px; background: #efefef; }
+.comparison-chart-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; }
+.comparison-chart-toolbar h2 { margin: 0 auto 0 0; font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; font-size: 12px; font-weight: 600; }
+.comparison-chart-toolbar h2 small { color: #4d4d4d; font-size: 10px; font-weight: 400; }
+.comparison-chart-search, .comparison-chart-search > div, .comparison-chart-legend { display: flex; min-width: 0; align-items: center; gap: 3px; }
+.comparison-chart-search > div:last-child { min-width: 130px; }
+.comparison-chart-search button, .comparison-chart-item button { min-height: 20px; border: 1px solid #8f8f8f; border-radius: 0; background: linear-gradient(#fff, #dadada); color: #151515; padding: 1px 4px; font: inherit; font-size: 10px; }
+.comparison-chart-search button[aria-pressed="true"] { border-color: #315e91; background: #4b82bd; color: #fff; }
+.comparison-chart-legend { flex-wrap: wrap; align-items: stretch; gap: 2px 7px; background: #f6f6f6; }
+.comparison-chart-item { display: inline-flex; min-width: 0; align-items: center; gap: 3px; white-space: nowrap; }
+.comparison-chart-item i { width: 8px; height: 8px; border: 1px solid #555; }
+.comparison-chart-item button { min-height: 16px; padding: 0 3px; }
+.comparison-chart-item-status { color: #3d3d3d; }
+.comparison-chart-item-note { max-width: min(28vw, 230px); overflow: hidden; color: #555; text-overflow: ellipsis; }
+.comparison-chart-scope { color: #414141; line-height: 1.35; }
+.comparison-chart-plot { position: relative; min-width: 0; min-height: 120px; flex: 1 1 0; overflow: hidden; background: #d8d8d8; }
+.comparison-chart-plot > [data-testid="comparison-lightweight-chart"] { position: absolute; inset: 0; }
+.comparison-chart-empty { margin: 0; padding: 8px; color: #4d4d4d; }
+.comparison-chart-notes { color: #8a1d1d; }
+.comparison-chart footer { border-bottom: 0; color: #4d4d4d; font-size: 9px; }
+@media (max-width: 700px) { .comparison-chart-toolbar { gap: 3px; } .comparison-chart-toolbar h2 { flex-basis: 100%; } .comparison-chart-search { width: 100%; } .comparison-chart-search > div:last-child { flex: 1; } }

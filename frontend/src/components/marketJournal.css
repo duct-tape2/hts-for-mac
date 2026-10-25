@@ -1,0 +1,21 @@
+.market-journal { display: flex; min-width: 0; min-height: 0; height: 100%; flex: 1; flex-direction: column; overflow: hidden; border: 1px solid #949494; background: #f6f6f6; color: #171717; font-family: Consolas, "D2Coding", "Apple SD Gothic Neo", monospace; font-size: 10px; }
+.market-journal > header, .market-journal-replay, .market-journal > footer { display: flex; flex: 0 0 auto; align-items: center; justify-content: space-between; gap: 5px; border-bottom: 1px solid #949494; padding: 3px 5px; background: #e8e8e8; }
+.market-journal h2 { display: inline; margin: 0 5px 0 0; font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; font-size: 12px; font-weight: 600; }
+.market-journal header span, .market-journal > footer { color: #4d4d4d; }
+.market-journal-actions { display: inline-flex; gap: 2px; }
+.market-journal button { min-height: 20px; border: 1px solid #8f8f8f; border-radius: 0; background: linear-gradient(#fff, #dadada); color: #151515; padding: 1px 5px; font: inherit; font-size: 10px; }
+.market-journal button[aria-pressed="true"] { border-color: #315e91; background: #4b82bd; color: #fff; }
+.market-journal button:disabled { color: #888; }
+.market-journal-gap { flex: 0 0 auto; margin: 0; border-bottom: 1px solid #a86d00; padding: 3px 5px; background: #fff4cf; color: #654800; }
+.market-journal-replay { flex-wrap: wrap; justify-content: flex-start; background: #f5f5f5; color: #404040; }
+.market-journal-replay label { display: inline-flex; align-items: center; gap: 3px; }
+.market-journal-replay input { width: 110px; accent-color: #315e91; }
+.market-journal-table-wrap { min-height: 0; flex: 1; overflow: auto; }
+.market-journal table { width: max-content; min-width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.market-journal th, .market-journal td { height: 21px; border: 1px solid #b8b8b8; padding: 1px 5px; text-align: right; white-space: nowrap; }
+.market-journal th { position: sticky; top: 0; z-index: 1; background: #dce4f0; text-align: center; font-weight: 600; }
+.market-journal td:nth-child(2), .market-journal td:nth-child(4), .market-journal td:last-child { text-align: left; }
+.market-journal tr[aria-current="true"] td { background: #dce9f8; }
+.market-journal-empty { height: 60px; text-align: center !important; color: #4d4d4d; }
+.market-journal > footer { border-bottom: 0; font-size: 9px; }
+@media (max-width: 700px) { .market-journal > header { align-items: flex-start; } .market-journal-replay { gap: 3px; } }

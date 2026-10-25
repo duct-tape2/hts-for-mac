@@ -1,0 +1,5 @@
+.panel-chart-search { display:flex; flex:0 0 auto; align-items:center; gap:4px; min-height:25px; padding:1px 5px; border-bottom:1px solid #a3aab4; background:#e1e6ee; color:#27374e; font-size:10px; }
+.panel-chart-search select { width:53px; min-height:22px; height:22px; border:1px solid #9aa7b8; background:#fff; color:#26384e; border-radius:0; }
+.panel-chart-search-input { width:240px; min-width:100px; max-width:70%; }
+.panel-chart-search-input input { min-height:22px !important; height:22px !important; padding:1px 5px !important; font-size:11px !important; border-radius:0 !important; }
+.panel-chart-search > span { white-space:nowrap; }

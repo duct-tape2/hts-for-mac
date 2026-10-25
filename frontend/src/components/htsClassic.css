@@ -1,0 +1,479 @@
+.terminal-shell[data-hts-theme="classic"] {
+  color-scheme: light;
+  --surface: #f4f5f7;
+  --line: #b8c0cc;
+  --muted: #4b5563;
+  --accent: #3b568f;
+  --hts-desktop-bg: #3a3f47;
+  --hts-title-bg: #3b568f;
+  --hts-title-fg: #ffffff;
+  --hts-control-bg: #e4e7ec;
+  --hts-control-hover: #d5dae2;
+  --hts-control-border: #8f99a8;
+  --hts-grid-border: #cfd6e0;
+  --hts-row-odd: #ffffff;
+  --hts-row-even: #e6e6e6;
+  --hts-row-hover: #d8e6ff;
+  --hts-up: #d61f2c;
+  --hts-down: #185abd;
+  --hts-chart-bg: #ffffff;
+  --hts-chart-text: #111827;
+  --hts-chart-grid: #d9dee7;
+  --hts-chart-up: #d61f2c;
+  --hts-chart-down: #185abd;
+  background: var(--hts-desktop-bg);
+  color: #111827;
+  font-size: 12px;
+  scrollbar-color: #9aa4b2 #e4e7ec;
+}
+
+.terminal-shell[data-hts-theme="classic"] * {
+  scrollbar-color: #9aa4b2 #e4e7ec;
+}
+
+.terminal-shell[data-hts-theme="classic"] .hts-workspace {
+  min-width: 800px;
+  background: var(--hts-desktop-bg);
+}
+
+.terminal-shell[data-hts-theme="classic"] .terminal-header {
+  height: 32px;
+  background: var(--hts-title-bg);
+  border-bottom: 1px solid #24375e;
+  color: var(--hts-title-fg);
+}
+
+.terminal-shell[data-hts-theme="classic"] .terminal-brand,
+.terminal-shell[data-hts-theme="classic"] .terminal-brand strong,
+.terminal-shell[data-hts-theme="classic"] .terminal-clocks b {
+  color: #ffffff;
+}
+
+.terminal-shell[data-hts-theme="classic"] .terminal-brand strong span,
+.terminal-shell[data-hts-theme="classic"] .terminal-title,
+.terminal-shell[data-hts-theme="classic"] .terminal-clocks {
+  color: #dbeafe;
+  border-color: #5b76ad;
+}
+
+.terminal-shell[data-hts-theme="classic"] .terminal-logo {
+  background: #ffffff;
+  color: var(--hts-title-bg);
+}
+
+.terminal-shell[data-hts-theme="classic"] .terminal-readonly {
+  background: #2b4270;
+  border-color: #7c97cc;
+  color: #ffffff;
+}
+
+.terminal-shell[data-hts-theme="classic"] .workspace-menu,
+.terminal-shell[data-hts-theme="classic"] .virtual-workspaces,
+.terminal-shell[data-hts-theme="classic"] .instrument-toolbar,
+.terminal-shell[data-hts-theme="classic"] .workspace-status {
+  background: #dfe3ea;
+  border-color: #9aa4b2;
+  color: #111827;
+  overflow-x: auto;
+}
+
+.terminal-shell[data-hts-theme="classic"] .workspace-caption,
+.terminal-shell[data-hts-theme="classic"] .workspace-save-note,
+.terminal-shell[data-hts-theme="classic"] .workspace-preset,
+.terminal-shell[data-hts-theme="classic"] .toolbar-link-group,
+.terminal-shell[data-hts-theme="classic"] .menu-separator {
+  color: #374151;
+  border-color: #9aa4b2;
+}
+
+.terminal-shell[data-hts-theme="classic"] .workspace-tabs button {
+  background: #d0d6e0;
+  color: #1f2937;
+  border: 1px solid #9aa4b2;
+  border-bottom: 0;
+  font-size: 12px;
+}
+
+.terminal-shell[data-hts-theme="classic"] .workspace-tabs button:hover {
+  background: #eef1f6;
+  color: #000000;
+}
+
+.terminal-shell[data-hts-theme="classic"] .workspace-tabs button.active {
+  background: var(--hts-title-bg);
+  color: #ffffff;
+  border-color: #24375e;
+  font-weight: 600;
+}
+
+.terminal-shell[data-hts-theme="classic"] .workspace-number {
+  background: #ffffff;
+  color: #111827;
+  border-color: #7c8798;
+}
+
+.terminal-shell[data-hts-theme="classic"] .workspace-help {
+  background: #eef2f8;
+  border-bottom: 1px solid #9aa4b2;
+  color: #1f2937;
+}
+
+.terminal-shell[data-hts-theme="classic"] .btn,
+.terminal-shell[data-hts-theme="classic"] .btn-ghost,
+.terminal-shell[data-hts-theme="classic"] .hts-btn,
+.terminal-shell[data-hts-theme="classic"] .market-switch button,
+.terminal-shell[data-hts-theme="classic"] .symbol-shortcuts button {
+  background: var(--hts-control-bg);
+  color: #111827;
+  border: 1px solid var(--hts-control-border);
+  font-size: 12px;
+}
+
+.terminal-shell[data-hts-theme="classic"] .btn:hover,
+.terminal-shell[data-hts-theme="classic"] .btn-ghost:hover,
+.terminal-shell[data-hts-theme="classic"] .hts-btn:hover,
+.terminal-shell[data-hts-theme="classic"] .market-switch button:hover,
+.terminal-shell[data-hts-theme="classic"] .symbol-shortcuts button:hover {
+  background: var(--hts-control-hover);
+  color: #000000;
+  border-color: #6b7688;
+}
+
+.terminal-shell[data-hts-theme="classic"] .btn-primary,
+.terminal-shell[data-hts-theme="classic"] .hts-btn[aria-pressed="true"],
+.terminal-shell[data-hts-theme="classic"] .market-switch button.active,
+.terminal-shell[data-hts-theme="classic"] .symbol-shortcuts button.active {
+  background: var(--hts-title-bg);
+  color: #ffffff;
+  border-color: #24375e;
+}
+
+.terminal-shell[data-hts-theme="classic"] .btn-danger {
+  background: var(--hts-up);
+  color: #ffffff;
+  border: 1px solid #991b1b;
+}
+
+.terminal-shell[data-hts-theme="classic"] .field,
+.terminal-shell[data-hts-theme="classic"] .workspace-rename input,
+.terminal-shell[data-hts-theme="classic"] .panel-group-select,
+.terminal-shell[data-hts-theme="classic"] .toolbar-link-group select,
+.terminal-shell[data-hts-theme="classic"] input:not([type="checkbox"]):not([type="radio"]),
+.terminal-shell[data-hts-theme="classic"] select,
+.terminal-shell[data-hts-theme="classic"] textarea {
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid var(--hts-control-border);
+  box-shadow: none;
+  font-size: 12px;
+}
+
+.terminal-shell[data-hts-theme="classic"] .data-mode {
+  background: #e6f4ea;
+  color: #137333;
+  border-color: #81c995;
+}
+
+.terminal-shell[data-hts-theme="classic"] .data-mode.fixture {
+  background: #fef7e0;
+  color: #9a5300;
+  border-color: #e6a700;
+}
+
+.terminal-shell[data-hts-theme="classic"] .quote-ribbon {
+  background: #eef1f6;
+  border-bottom: 1px solid #9aa4b2;
+  color: #111827;
+  overflow-x: auto;
+}
+
+.terminal-shell[data-hts-theme="classic"] .quote-name > div,
+.terminal-shell[data-hts-theme="classic"] .quote-stat-grid dt,
+.terminal-shell[data-hts-theme="classic"] .quote-provenance {
+  color: #4b5563;
+}
+
+.terminal-shell[data-hts-theme="classic"] .venue-tag,
+.terminal-shell[data-hts-theme="classic"] .quote-provenance > span:first-child {
+  background: var(--hts-title-bg);
+  color: #ffffff;
+  padding: 1px 4px;
+}
+
+.terminal-shell[data-hts-theme="classic"] .quote-stat-grid {
+  border-left-color: #b8c0cc;
+}
+
+.terminal-shell[data-hts-theme="classic"] .dock-area {
+  background: var(--hts-desktop-bg);
+}
+
+.terminal-shell[data-hts-theme="classic"] .flexlayout__layout {
+  --flexlayout-color-text: #111827;
+  --flexlayout-color-background: #3a3f47;
+  --flexlayout-color-base: #f4f5f7;
+  --flexlayout-color-1: #e4e7ec;
+  --flexlayout-color-2: #d5dae2;
+  --flexlayout-color-3: #b8c0cc;
+  --flexlayout-color-4: #9aa4b2;
+  --flexlayout-color-5: #7c8798;
+  --flexlayout-color-6: #3b568f;
+  --flexlayout-font-size: 12px;
+  --flexlayout-color-tab-selected: #111827;
+  --flexlayout-color-tab-selected-background: #ffffff;
+  --flexlayout-color-tabset-background: #3b568f;
+  --flexlayout-color-splitter: #3a3f47;
+  --flexlayout-color-splitter-hover: #3b568f;
+  --flexlayout-color-splitter-drag: #24375e;
+  --flexlayout-color-focus: #3b568f;
+  --flexlayout-color-tab-unselected: #e2e8f0;
+  --flexlayout-color-icon: #ffffff;
+}
+
+.terminal-shell[data-hts-theme="classic"] .flexlayout__tabset {
+  border: 1px solid #24375e;
+  background: #ffffff;
+}
+
+.terminal-shell[data-hts-theme="classic"] .flexlayout__tabset_tabbar_outer,
+.terminal-shell[data-hts-theme="classic"] .flexlayout__tabset_tabbar_outer_top,
+.terminal-shell[data-hts-theme="classic"] .flexlayout__tabset_header {
+  background: var(--hts-title-bg);
+  border-bottom: 1px solid #24375e;
+  color: #ffffff;
+}
+
+.terminal-shell[data-hts-theme="classic"] .flexlayout__tab_button {
+  background: #2c4373;
+  color: #e2e8f0;
+  border-right: 1px solid #1e3054;
+  padding: 3px 8px;
+}
+
+.terminal-shell[data-hts-theme="classic"] .flexlayout__tab_button:hover {
+  background: #4866a3;
+  color: #ffffff;
+}
+
+.terminal-shell[data-hts-theme="classic"] .flexlayout__tab_button--selected {
+  background: #ffffff;
+  color: #111827;
+  font-weight: 600;
+  box-shadow: inset 0 2px var(--hts-title-bg);
+}
+
+.terminal-shell[data-hts-theme="classic"] .flexlayout__tab {
+  overflow: hidden;
+  background: #ffffff;
+  color: #111827;
+}
+
+.terminal-shell[data-hts-theme="classic"] .panel,
+.terminal-shell[data-hts-theme="classic"] .analysis-panel,
+.terminal-shell[data-hts-theme="classic"] .dock-chart,
+.terminal-shell[data-hts-theme="classic"] .linked-panel,
+.terminal-shell[data-hts-theme="classic"] .capture-panel {
+  background: #ffffff;
+  color: #111827;
+  overflow: auto;
+  min-width: 0;
+}
+
+.terminal-shell[data-hts-theme="classic"] .chart-linkbar,
+.terminal-shell[data-hts-theme="classic"] .analysis-toolbar,
+.terminal-shell[data-hts-theme="classic"] .capture-toolbar,
+.terminal-shell[data-hts-theme="classic"] .watchlist-toolbar,
+.terminal-shell[data-hts-theme="classic"] .analysis-foot {
+  background: var(--hts-control-bg);
+  color: #1f2937;
+  border-color: #9aa4b2;
+  min-height: 24px;
+}
+
+.watchlist-quick-groups { display: flex; gap: 3px; margin-top: 4px; }
+.watchlist-quick-groups button { min-width: 30px; height: 23px; padding: 0 8px; }
+.terminal-shell[data-hts-theme="classic"] .hts-table tr[aria-selected="true"] { background: #bfd3e5; }
+
+.terminal-shell[data-hts-theme="classic"] .chart-linkbar b,
+.terminal-shell[data-hts-theme="classic"] .analysis-toolbar b {
+  color: #111827;
+  font-weight: 600;
+}
+
+.terminal-shell[data-hts-theme="classic"] .link-group {
+  background: #fff3cd;
+  color: #664d03;
+}
+
+.terminal-shell[data-hts-theme="classic"] .link-group.pinned {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.terminal-shell[data-hts-theme="classic"] table.data,
+.terminal-shell[data-hts-theme="classic"] .hts-table,
+.terminal-shell[data-hts-theme="classic"] .capture-table {
+  min-width: 0;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  background: #ffffff;
+  color: #111827;
+}
+
+.terminal-shell[data-hts-theme="classic"] table.data th,
+.terminal-shell[data-hts-theme="classic"] .hts-table th,
+.terminal-shell[data-hts-theme="classic"] .capture-table th {
+  height: 22px;
+  padding: 0 6px;
+  background: #dfe3ea;
+  color: #111827;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid #9aa4b2;
+}
+
+.terminal-shell[data-hts-theme="classic"] table.data td,
+.terminal-shell[data-hts-theme="classic"] .hts-table td,
+.terminal-shell[data-hts-theme="classic"] .capture-table td {
+  height: 22px;
+  padding: 0 6px;
+  line-height: 21px;
+  font-size: 12px;
+  border: 1px solid var(--hts-grid-border);
+}
+
+.terminal-shell[data-hts-theme="classic"] table.data tbody tr:nth-child(odd),
+.terminal-shell[data-hts-theme="classic"] .hts-table tbody tr:nth-child(odd),
+.terminal-shell[data-hts-theme="classic"] .capture-table tbody tr:nth-child(odd),
+.terminal-shell[data-hts-theme="classic"] .desk2-list:nth-child(odd) {
+  background: var(--hts-row-odd);
+}
+
+.terminal-shell[data-hts-theme="classic"] table.data tbody tr:nth-child(even),
+.terminal-shell[data-hts-theme="classic"] .hts-table tbody tr:nth-child(even),
+.terminal-shell[data-hts-theme="classic"] .capture-table tbody tr:nth-child(even),
+.terminal-shell[data-hts-theme="classic"] .desk2-list:nth-child(even),
+.terminal-shell[data-hts-theme="classic"] .instrument-details > div:nth-child(even) {
+  background: var(--hts-row-even);
+}
+
+.terminal-shell[data-hts-theme="classic"] table.data tbody tr:hover,
+.terminal-shell[data-hts-theme="classic"] .hts-table tbody tr:hover,
+.terminal-shell[data-hts-theme="classic"] .capture-table tbody tr:hover,
+.terminal-shell[data-hts-theme="classic"] .desk2-list:hover {
+  background: var(--hts-row-hover);
+}
+
+.terminal-shell[data-hts-theme="classic"] .desk2-list,
+.terminal-shell[data-hts-theme="classic"] .instrument-details > div {
+  min-height: 22px;
+  font-size: 12px;
+  border-bottom: 1px solid var(--hts-grid-border);
+}
+
+.terminal-shell[data-hts-theme="classic"] .instrument-details dt,
+.terminal-shell[data-hts-theme="classic"] .panel-empty {
+  color: #4b5563;
+}
+
+.terminal-shell[data-hts-theme="classic"] .analysis-notes {
+  background: #ffffff;
+  color: #111827;
+}
+
+.terminal-shell[data-hts-theme="classic"] .credential-settings__badge {
+  background: var(--hts-control-bg);
+  color: #111827;
+  border-color: var(--hts-control-border);
+}
+
+.terminal-shell[data-hts-theme="classic"] .credential-settings__dialog {
+  background: #f4f5f7;
+  color: #111827;
+  border: 2px solid var(--hts-title-bg);
+}
+
+.terminal-shell[data-hts-theme="classic"] .credential-settings__header {
+  background: var(--hts-title-bg);
+  color: #ffffff;
+  border-bottom: 1px solid #24375e;
+}
+
+.terminal-shell[data-hts-theme="classic"] .credential-settings__footer {
+  background: #dfe3ea;
+  border-top: 1px solid #9aa4b2;
+}
+
+.terminal-shell[data-hts-theme="classic"] .credential-settings__status,
+.terminal-shell[data-hts-theme="classic"] .credential-settings__hint,
+.terminal-shell[data-hts-theme="classic"] .credential-settings__field {
+  background: #ffffff;
+  color: #111827;
+  border-color: #b8c0cc;
+}
+
+.terminal-shell[data-hts-theme="classic"] .text-up {
+  color: var(--hts-up) !important;
+}
+
+.terminal-shell[data-hts-theme="classic"] .text-down {
+  color: var(--hts-down) !important;
+}
+
+
+/* Integration corrections: inherited Tailwind utility palette on classic surfaces. */
+.terminal-shell[data-hts-theme="classic"] .text-cream-50,
+.terminal-shell[data-hts-theme="classic"] .text-cream-100,
+.terminal-shell[data-hts-theme="classic"] .text-cream-200 { color: #182333; }
+.terminal-shell[data-hts-theme="classic"] .text-cream-300,
+.terminal-shell[data-hts-theme="classic"] .text-cream-400,
+.terminal-shell[data-hts-theme="classic"] .text-cream-500 { color: #46505d; }
+.terminal-shell[data-hts-theme="classic"] .text-brass-400 { color: #264c8c; }
+.terminal-shell[data-hts-theme="classic"] .terminal-header .text-cream-300 { color: white; }
+.terminal-shell[data-hts-theme="classic"] .bg-ink-900,
+.terminal-shell[data-hts-theme="classic"] .bg-ink-950,
+.terminal-shell[data-hts-theme="classic"] .bg-ink-800 { background-color: #edf0f4; }
+.terminal-shell[data-hts-theme="classic"] .linked-panel { overflow: hidden; }
+.terminal-shell[data-hts-theme="classic"] .linked-panel > .classic-window > .classic-titlebar { display: none; }
+.terminal-shell[data-hts-theme="classic"] button:focus-visible,
+.terminal-shell[data-hts-theme="classic"] a:focus-visible { outline: 2px solid #28589e; outline-offset: -2px; }
+
+/* Keep absolute search menus outside the toolbar clipping rectangle. */
+.terminal-shell[data-hts-theme="classic"] .workspace-menu,
+.terminal-shell[data-hts-theme="classic"] .instrument-toolbar { overflow: visible; }
+.terminal-shell[data-hts-theme="classic"] .terminal-main { overflow-x: auto; }
+
+/* The command rows share the compact desktop rhythm of the supplied HTS captures. */
+.terminal-shell[data-hts-theme="classic"] .terminal-header { height:24px; gap:8px; padding:0 7px; }
+.terminal-shell[data-hts-theme="classic"] .terminal-brand strong { font-size:12px; }
+.terminal-shell[data-hts-theme="classic"] .terminal-logo { width:18px; height:18px; font-size:14px; }
+.terminal-shell[data-hts-theme="classic"] .workspace-commandbar { min-height:30px; padding:2px 5px; gap:5px; overflow:visible; position:relative; z-index:25; flex-wrap:nowrap; }
+.terminal-shell[data-hts-theme="classic"] .workspace-commandbar .workspace-tabs { display:flex; gap:2px; flex-shrink:1; min-width:80px; overflow-x:auto; }
+.terminal-shell[data-hts-theme="classic"] .workspace-commandbar .workspace-tabs button { display:flex; gap:3px; align-items:center; white-space:nowrap; padding:3px 6px; font-size:11px; }
+.terminal-shell[data-hts-theme="classic"] .workspace-commandbar .workspace-number { min-width:13px; height:14px; font-size:10px; }
+.terminal-shell[data-hts-theme="classic"] .workspace-commandbar .credential-settings { margin-left:auto; flex-shrink:0; }
+.terminal-shell[data-hts-theme="classic"] .workspace-commandbar .credential-settings__badge { font-size:10px; white-space:nowrap; }
+.terminal-shell[data-hts-theme="classic"] .instrument-toolbar { min-height:30px; padding:2px 5px; gap:5px; }
+.terminal-shell[data-hts-theme="classic"] .workspace-tools { position:relative; flex-shrink:0; }
+.terminal-shell[data-hts-theme="classic"] .workspace-tools summary { list-style:none; cursor:pointer; }
+.terminal-shell[data-hts-theme="classic"] .workspace-tools summary::-webkit-details-marker { display:none; }
+.terminal-shell[data-hts-theme="classic"] .workspace-tools-menu { position:absolute; top:26px; right:0; width:240px; display:flex; flex-direction:column; gap:5px; background:#e5e7eb; border:1px solid #79869b; box-shadow:2px 4px 12px #0004; padding:8px; z-index:100; }
+.terminal-shell[data-hts-theme="classic"] .workspace-tools:not([open]) .workspace-tools-menu { display:none; }
+.terminal-shell[data-hts-theme="classic"] .workspace-rename { padding:3px 8px; background:#e5e7eb; }
+.terminal-shell[data-hts-theme="classic"] .panel-title-controls { display:flex; align-items:center; gap:2px; color:#fff; font-size:10px; padding-right:2px; }
+.terminal-shell[data-hts-theme="classic"] .panel-title-controls .hts-btn,
+.terminal-shell[data-hts-theme="classic"] .panel-title-controls .panel-group-select { min-height:18px; height:18px; line-height:16px; padding:0 3px; font-size:10px; border-radius:0; }
+.terminal-shell[data-hts-theme="classic"] .panel-title-controls .panel-group-select { width:30px; }
+.terminal-shell[data-hts-theme="classic"] .panel-title-controls .panel-pin { max-width:36px; }
+.terminal-shell[data-hts-theme="classic"] .workspace-status .workspace-save-note { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:38vw; }
+@media(max-width:1280px) {
+ .terminal-shell[data-hts-theme="classic"] .workspace-commandbar .workspace-tabs button { max-width:90px; overflow:hidden; padding:3px 4px; }
+ .terminal-shell[data-hts-theme="classic"] .terminal-title { display:none; }
+ .terminal-shell[data-hts-theme="classic"] .symbol-shortcuts { gap:2px; }
+}
+@media(max-width:1050px) {
+ .terminal-shell[data-hts-theme="classic"] .workspace-commandbar .workspace-tabs button { font-size:0; }
+ .terminal-shell[data-hts-theme="classic"] .workspace-commandbar .workspace-tabs button .workspace-number { font-size:11px; }
+ .terminal-shell[data-hts-theme="classic"] .workspace-commandbar .credential-settings__badge { max-width:110px; overflow:hidden; text-overflow:ellipsis; }
+}

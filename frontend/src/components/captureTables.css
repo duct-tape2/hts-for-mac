@@ -1,0 +1,67 @@
+.capture-toolbar {
+  align-content: center;
+  gap: 3px;
+  min-height: 31px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.capture-toolbar fieldset {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  min-width: max-content;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+.capture-toolbar legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.capture-toolbar label.capture-radio { gap: 1px; padding: 1px 3px; border: 1px solid transparent; font-size: 11px; }
+.capture-toolbar label.capture-radio:has(input:checked) { border-color: #5377a8; background: #d5e4f7; }
+.capture-toolbar label.capture-radio input { width: 12px; min-height: 12px; margin: 0; accent-color: #315e91; }
+.capture-toolbar .capture-query-label { margin-left: auto; }
+.capture-toolbar .capture-query-label input { width: 126px; }
+.capture-toolbar .capture-date-label input { width: 124px; }
+.capture-toolbar .classic-periods { gap: 1px; }
+.capture-toolbar .classic-periods button { min-width: 25px; font-size: 11px; }
+
+.capture-statusline { min-height: 21px; flex-wrap: nowrap; gap: 8px; overflow: hidden; }
+.capture-statusline > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.capture-statusline .capture-status-main { flex: 1 1 auto; }
+.capture-statusline .capture-status-detail { flex: 0 1 auto; color: #5b4a2d; }
+.capture-statusline .capture-status-refreshing { color: #26589f; }
+
+.capture-grid-wrap { display: flex; min-height: 0; flex: 1; flex-direction: column; overflow: hidden; }
+.capture-grid-units { flex: 0 0 auto; min-height: 18px; margin: 0; border-bottom: 1px solid #a9a9a9; padding: 2px 6px; background: #efefef; color: #424242; font-family: Consolas, "D2Coding", monospace; font-size: 10px; }
+.capture-grid-scroll { flex: 1; }
+.capture-grid { width: max-content; min-width: 100%; table-layout: fixed; }
+.capture-grid th { position: sticky; top: 0; }
+.capture-grid th.capture-grid-pinned { z-index: 4; background: #dce4f0; }
+.capture-grid td.capture-grid-pinned { position: sticky; z-index: 2; background: #fff; }
+.capture-grid tbody tr:nth-child(even) td.capture-grid-pinned { background: #e8e8e8; }
+.capture-grid tbody tr:hover td.capture-grid-pinned { background: #dbeeff; }
+.capture-grid tbody tr.classic-selected td.capture-grid-pinned { background: #c7e6f4; }
+.capture-column-resize { position: absolute; top: 0; right: -3px; z-index: 6; width: 7px; height: 100%; cursor: col-resize; border: 0; background: transparent; padding: 0; }
+.capture-column-resize:hover,
+.capture-column-resize:focus-visible { background: #315e91; outline: 0; }
+.capture-grid .classic-column-button { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.capture-grid th,
+.capture-grid td { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.capture-grid td > span,
+.capture-grid td .classic-row-link { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.capture-pager { min-height: 23px; flex-wrap: nowrap; overflow: hidden; }
+.capture-pager .capture-pager-detail { overflow: hidden; color: #5c5c5c; text-overflow: ellipsis; white-space: nowrap; }
+
+.watchlist-classic-toolbar { gap: 2px; padding: 3px 5px; }
+.watchlist-classic-toolbar > div { min-width: 0; }
+.watchlist-classic-toolbar .watchlist-toolbar { min-height: 23px; }
+.watchlist-classic-toolbar .watchlist-quick-groups { display: inline-flex; flex: 0 0 auto; gap: 2px; }
+.watchlist-classic-toolbar .watchlist-quick-groups .hts-btn { min-width: 27px; min-height: 23px; padding: 0 5px; }
+.watchlist-classic-toolbar .watchlist-search-row { display: flex; min-width: 0; align-items: center; gap: 3px; }
+.watchlist-classic-toolbar .watchlist-search-row > div:last-child { min-width: 110px; flex: 1; }
+.watchlist-classic-toolbar .watchlist-status { overflow: hidden; color: #7e6430; text-overflow: ellipsis; white-space: nowrap; font-size: 10px; }
+.watchlist-table tbody tr { height: 22px; }
+.watchlist-table tbody td { height: 22px; padding-top: 0; padding-bottom: 0; }
+.watchlist-empty-row td { height: 22px; }

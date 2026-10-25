@@ -1,0 +1,5 @@
+.workspace-transfer { display: flex; align-items: flex-start; gap: .55rem; color: var(--hts-text, #d5d7dc); }
+.workspace-transfer-actions { display: flex; gap: .28rem; flex: 0 0 auto; }
+.workspace-transfer-safety { max-width: 39rem; font-size: 10px; line-height: 1.35; color: var(--hts-muted, #9aa1ad); }
+.workspace-transfer-safety p { margin: 0 0 .16rem; }
+.workspace-transfer-safety b { color: var(--hts-text, #e9eaed); }
