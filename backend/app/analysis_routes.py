@@ -30,11 +30,25 @@ def _registry():
     return result
 
 
+def _required_parameters(metadata: dict) -> tuple[str, ...]:
+    """Return only public, provider-declared requirements for a feature."""
+    declared = metadata.get("requiredParameters", ())
+    if not isinstance(declared, (tuple, list)) or not all(isinstance(key, str) for key in declared):
+        return ()
+    known = {
+        str(parameter.get("key") or "")
+        for parameter in metadata.get("parameters", [])
+        if isinstance(parameter, dict)
+    }
+    return tuple(key for key in declared if key in known)
+
+
 @router.get("/features")
 def features():
     return {"features": [
         {"id": key, **{field: copy.deepcopy(meta[field]) for field in
-          ("title", "market", "description", "parameters") if field in meta}}
+          ("title", "market", "description", "parameters") if field in meta},
+         "requiredParameters": list(_required_parameters(meta))}
         for key, (_, meta) in _registry().items()
     ]}
 
@@ -52,6 +66,8 @@ def query_feature(feature_id: str, request: Request):
     limits = {p["key"]: min(2048, max(1, int(p.get("maxLength", 160)))) for p in metadata.get("parameters", [])}
     if any(len(value) > limits.get(key, 160) for key, value in supplied.items()):
         raise HTTPException(422, "조회 조건이 너무 깁니다.")
+    if any(not str(supplied.get(key) or "").strip() for key in _required_parameters(metadata)):
+        raise HTTPException(422, "필수 조회 조건을 입력하세요.")
     instrument = None
     try:
         if supplied.get("stkCd"):

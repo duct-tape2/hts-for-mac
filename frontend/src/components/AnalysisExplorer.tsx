@@ -106,6 +106,11 @@ function filteredRows(payload: AnalysisPayload | null, query: string, sort: Sort
   return column ? [...rows].sort((a, b) => compareRows(a, b, column, sort.direction)) : rows;
 }
 
+function missingRequiredParameters(feature: AnalysisFeature | null, values: Record<string, string>) {
+  if (!feature) return [];
+  return feature.parameters.filter((parameter) => feature.requiredParameters.includes(parameter.key) && !(values[parameter.key] ?? "").trim());
+}
+
 export function AnalysisExplorer({
   instrument,
   initialFeature,
@@ -134,7 +139,14 @@ export function AnalysisExplorer({
 
   const compatibleFeatures = useMemo(() => features.filter((feature) => feature.market === instrument.market), [features, instrument.market]);
   const selectedFeature = useMemo(() => compatibleFeatures.find((feature) => feature.id === featureId) ?? null, [compatibleFeatures, featureId]);
-  const parametersReady = Boolean(selectedFeature && parameterFeatureId === selectedFeature.id && selectedFeature.parameters.every((parameter) => Object.hasOwn(submittedParameters, parameter.key)));
+  const missingSubmittedParameters = missingRequiredParameters(selectedFeature, submittedParameters);
+  const missingDraftParameters = missingRequiredParameters(selectedFeature, draftParameters);
+  const parametersReady = Boolean(
+    selectedFeature
+    && parameterFeatureId === selectedFeature.id
+    && selectedFeature.parameters.every((parameter) => Object.hasOwn(submittedParameters, parameter.key))
+    && missingSubmittedParameters.length === 0,
+  );
 
   useEffect(() => {
     if (!active) return;
@@ -236,6 +248,10 @@ export function AnalysisExplorer({
   function submitParameters(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!selectedFeature) return;
+    if (missingDraftParameters.length) {
+      setSubmissionError(`필수 입력: ${missingDraftParameters.map((parameter) => parameter.label).join(", ")} 값을 입력하세요.`);
+      return;
+    }
     try {
       const next = normalizeAnalysisParameters(selectedFeature, draftParameters);
       setSubmittedParameters(next);
@@ -308,7 +324,7 @@ export function AnalysisExplorer({
           </select>
         </label>
         {selectedFeature && <span className="analysis-explorer-description" title={selectedFeature.description}>{selectedFeature.description}</span>}
-        <button className="classic-button" type="button" onClick={() => setRequestNonce((current) => current + 1)} disabled={!selectedFeature || result.loading}>새로고침</button>
+        <button className="classic-button" type="button" onClick={() => setRequestNonce((current) => current + 1)} disabled={!selectedFeature || !parametersReady || result.loading}>새로고침</button>
       </div>
 
       {featureLoading && !features.length && <p className="classic-empty">분석 기능을 불러오는 중…</p>}
@@ -316,16 +332,20 @@ export function AnalysisExplorer({
       {!featureLoading && !featureError && !compatibleFeatures.length && <p className="classic-empty">현재 시장을 지원하는 분석 기능이 없습니다.</p>}
 
       {selectedFeature && <form className="analysis-explorer-parameters" onSubmit={submitParameters}>
-        {selectedFeature.parameters.map((parameter) => <label key={parameter.key}>{parameter.label}
+        {selectedFeature.parameters.map((parameter) => {
+          const required = selectedFeature.requiredParameters.includes(parameter.key);
+          return <label key={parameter.key}>{parameter.label}{required && <span aria-hidden="true"> · 필수</span>}
           {parameter.type === "select" ? (
-            <select aria-label={parameter.label} value={draftParameters[parameter.key] ?? ""} onChange={(event) => setDraftParameters((current) => ({ ...current, [parameter.key]: event.target.value }))}>
+            <select aria-label={parameter.label} aria-required={required} value={draftParameters[parameter.key] ?? ""} onChange={(event) => setDraftParameters((current) => ({ ...current, [parameter.key]: event.target.value }))}>
               {parameter.options?.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
             </select>
           ) : (
-            <input aria-label={parameter.label} type={parameter.type} maxLength={parameter.maxLength ?? 120} value={draftParameters[parameter.key] ?? ""} onChange={(event) => setDraftParameters((current) => ({ ...current, [parameter.key]: event.target.value }))} />
+            <input aria-label={parameter.label} aria-required={required} type={parameter.type} maxLength={parameter.maxLength ?? 120} value={draftParameters[parameter.key] ?? ""} onChange={(event) => setDraftParameters((current) => ({ ...current, [parameter.key]: event.target.value }))} />
           )}
-        </label>)}
+        </label>;
+        })}
         <button className="classic-button" type="submit">조회</button>
+        {missingDraftParameters.length > 0 && <p className="analysis-explorer-guidance" role="status">필수 입력: {missingDraftParameters.map((parameter) => parameter.label).join(", ")} 값을 입력한 뒤 조회하세요.</p>}
         <label className="analysis-explorer-search">수신 행 검색
           <input aria-label="수신 행 검색" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="종목·값" />
         </label>

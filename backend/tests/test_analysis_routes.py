@@ -26,6 +26,7 @@ def test_catalogue_exposes_controls_not_transport(analysis):
     row=client.get('/api/analysis/features').json()['features'][0]
     assert row['id']=='kr-test'
     assert 'apiId' not in row and 'path' not in row
+    assert row['requiredParameters'] == []
 
 
 @pytest.mark.parametrize('url',[
@@ -59,3 +60,29 @@ def test_text_limits_only_expand_for_declared_metadata(analysis, monkeypatch):
     assert client.get('/api/analysis/kr-test', params={'symbols':'A'*2049}).status_code == 422
     assert client.get('/api/analysis/kr-test', params={'period':'A'*161}).status_code == 422
     assert len(calls) == 1
+
+
+def test_declared_required_parameter_is_exposed_and_checked_before_adapter(analysis, monkeypatch):
+    client, calls = analysis
+    registry = analysis_routes._registry()
+    metadata = registry['kr-test'][1]
+    metadata['parameters'].append({'key': 'themeCode', 'label': '테마코드', 'type': 'text', 'default': ''})
+    metadata['requiredParameters'] = ['themeCode']
+    monkeypatch.setattr(analysis_routes, '_registry', lambda: registry)
+    analysis_routes._cache[(analysis_routes.gateway.ENVIRONMENT, 'kr-test', ())] = (float('inf'), {'cached': True})
+
+    assert client.get('/api/analysis/features').json()['features'][0]['requiredParameters'] == ['themeCode']
+    assert client.get('/api/analysis/kr-test').status_code == 422
+    assert client.get('/api/analysis/kr-test?themeCode=%20%20').status_code == 422
+    assert calls == []
+    assert client.get('/api/analysis/kr-test?themeCode=550').status_code == 200
+    assert calls == [('kr-test', {'themeCode': '550'}, None)]
+
+
+def test_provider_metadata_declares_only_verified_required_parameters():
+    from app import analysis_kr, analysis_us
+
+    assert analysis_routes._required_parameters(analysis_kr.FEATURES['kr_theme_constituents']) == ('themeCode',)
+    assert analysis_routes._required_parameters(analysis_kr.FEATURES['kr_etf_returns']) == ('indexCode',)
+    assert analysis_routes._required_parameters(analysis_us.FEATURES['usa20922']) == ('symbols',)
+    assert analysis_routes._required_parameters(analysis_us.FEATURES['usa20920']) == ()

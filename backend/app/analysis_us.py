@@ -365,7 +365,7 @@ FEATURES: dict[str, dict[str, Any]] = {
             _param("priceBand", "가격 조건", "select", "0", _PRICE_BANDS),
             _param("minTradingValue", "최소 거래대금", "select", "0", _VALUE_BANDS),
             _param("minVolume", "최소 거래량", "select", "0", _VOLUME_BANDS),
-        ], "apiId": "usa20922", "path": "/api/us/rkinfo",
+        ], "requiredParameters": ["symbols"], "apiId": "usa20922", "path": "/api/us/rkinfo",
     },
     "usa20940": {
         "title": "미국주식 누적 등락률 상위(주식/업종)", "market": "US",

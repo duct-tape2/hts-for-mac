@@ -1,6 +1,6 @@
 [project]
 name = "moa-desk-api"
-version = "0.23.0rc1"
+version = "0.23.0rc2"
 description = "Mac용 키움 REST API 기반 국내·미국주식 조회 전용 API"
 readme = "README.md"
 requires-python = ">=3.13"

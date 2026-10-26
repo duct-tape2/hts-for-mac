@@ -26,6 +26,7 @@ class FeatureMetadata(TypedDict):
     market: str
     description: str
     parameters: list[dict[str, Any]]
+    requiredParameters: list[str]
     apiId: str
     path: str
 
@@ -710,7 +711,9 @@ _INSTRUMENT_FEATURES = frozenset({
 
 FEATURES: dict[str, FeatureMetadata] = {
     feature_id: {"featureId": feature_id, "title": title, "market": "KR", "description": description,
-                 "parameters": copy.deepcopy(spec["parameters"]), "apiId": spec["apiId"], "path": spec["path"]}
+                 "parameters": copy.deepcopy(spec["parameters"]),
+                 "requiredParameters": list(spec.get("required", ())),
+                 "apiId": spec["apiId"], "path": spec["path"]}
     for feature_id, title, description, spec in (
         ("kr_tape", "체결정보", "종목별 체결 시세와 누적 거래 정보를 조회합니다.", _SPECS["kr_tape"]),
         ("kr_brokers", "주식 거래원", "종목별 매도·매수 거래원 상위 정보를 조회합니다.", _SPECS["kr_brokers"]),

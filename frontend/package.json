@@ -1,7 +1,7 @@
 {
   "name": "moa-desk-ui",
-  "version": "0.23.0-rc.1",
-  "productVersion": "0.23.0-rc.1",
+  "version": "0.23.0-rc.2",
+  "productVersion": "0.23.0-rc.2",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack --port 3010 --hostname 127.0.0.1",

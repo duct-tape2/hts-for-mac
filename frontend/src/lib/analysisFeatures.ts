@@ -23,6 +23,7 @@ export type AnalysisFeature = {
   market: Market;
   description: string;
   parameters: AnalysisParameter[];
+  requiredParameters: string[];
 };
 
 export type AnalysisColumn = { key: string; label: string; numeric: boolean; unit?: string };
@@ -158,6 +159,11 @@ export function parseAnalysisFeatures(value: unknown): AnalysisFeature[] {
       market: member(row.market, markets, `features[${index}].market`),
       description: requiredString(row.description, `features[${index}].description`, 1000),
       parameters: row.parameters.map(parseParameter),
+      requiredParameters: row.requiredParameters === undefined
+        ? []
+        : Array.isArray(row.requiredParameters)
+          ? row.requiredParameters.map((parameterKey, requiredIndex) => key(parameterKey, `features[${index}].requiredParameters[${requiredIndex}]`))
+          : (() => { throw new ApiShapeError(`features[${index}].requiredParameters 값이 올바르지 않습니다.`); })(),
     };
     if (ids.has(feature.id)) throw new ApiShapeError("분석 기능 ID가 중복됩니다.");
     ids.add(feature.id);
@@ -165,6 +171,13 @@ export function parseAnalysisFeatures(value: unknown): AnalysisFeature[] {
     for (const parameter of feature.parameters) {
       if (parameterKeys.has(parameter.key)) throw new ApiShapeError(`${feature.title}의 조건 키가 중복됩니다.`);
       parameterKeys.add(parameter.key);
+    }
+    const requiredKeys = new Set<string>();
+    for (const parameterKey of feature.requiredParameters) {
+      if (!parameterKeys.has(parameterKey) || requiredKeys.has(parameterKey)) {
+        throw new ApiShapeError(`${feature.title}의 필수 조건 키가 올바르지 않습니다.`);
+      }
+      requiredKeys.add(parameterKey);
     }
     return feature;
   });

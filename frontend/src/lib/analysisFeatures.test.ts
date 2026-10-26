@@ -53,6 +53,27 @@ describe("analysis feature contracts", () => {
     expect(() => parseAnalysisFeatures({ features: [{ ...featureResponse.features[0], parameters: [{ key: "x", label: "x", type: "select", default: "x" }] }] })).toThrow("options");
   });
 
+  it("defaults required parameters to none and validates declared required keys", () => {
+    const [optional] = parseAnalysisFeatures(featureResponse);
+    expect(optional.requiredParameters).toEqual([]);
+
+    const [required] = parseAnalysisFeatures({
+      features: [{ ...featureResponse.features[0], requiredParameters: ["period"] }],
+    });
+    expect(required.requiredParameters).toEqual(["period"]);
+
+    for (const requiredParameters of [["unknown"], ["period", "period"]]) {
+      expect(() => parseAnalysisFeatures({
+        features: [{ ...featureResponse.features[0], requiredParameters }],
+      })).toThrow("필수 조건 키");
+    }
+    for (const requiredParameters of ["period", ["period", 3]]) {
+      expect(() => parseAnalysisFeatures({
+        features: [{ ...featureResponse.features[0], requiredParameters }],
+      })).toThrow("올바르지");
+    }
+  });
+
   it("resolves a server today default in Seoul while retaining an optional blank date", () => {
     const [feature] = parseAnalysisFeatures({
       features: [{ ...featureResponse.features[0], parameters: [

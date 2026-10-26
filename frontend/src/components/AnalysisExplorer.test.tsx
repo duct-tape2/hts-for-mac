@@ -13,6 +13,19 @@ function featuresResponse() {
   }), { status: 200, headers: { "Content-Type": "application/json" } });
 }
 
+function requiredFeaturesResponse() {
+  return new Response(JSON.stringify({
+    features: [{
+      id: "symbol-scan",
+      title: "종목 스캔",
+      market: "KR",
+      description: "명시한 종목 코드만 조회합니다.",
+      parameters: [{ key: "symbol", label: "종목 코드", type: "text", default: "" }],
+      requiredParameters: ["symbol"],
+    }],
+  }), { status: 200, headers: { "Content-Type": "application/json" } });
+}
+
 function resultResponse(featureId = "income", name = "삼성전자", note = "fixture response", scope: Record<string, unknown> = { universe: "KOSPI" }) {
   return new Response(JSON.stringify({
     featureId,
@@ -46,6 +59,32 @@ describe("AnalysisExplorer", () => {
     render(<AnalysisExplorer instrument={samsung} active={false} />);
     expect(fetch).not.toHaveBeenCalled();
     expect(screen.getByText("비활성 패널입니다. 조회를 중지했습니다.")).toBeInTheDocument();
+  });
+
+  it("does not request analysis while a required parameter is blank", async () => {
+    const fetch = vi.fn().mockResolvedValueOnce(requiredFeaturesResponse());
+    vi.stubGlobal("fetch", fetch);
+    render(<AnalysisExplorer instrument={samsung} active />);
+
+    expect(await screen.findByText("필수 입력: 종목 코드 값을 입력한 뒤 조회하세요.")).toBeInTheDocument();
+    expect(screen.getByLabelText("종목 코드")).toHaveAttribute("aria-required", "true");
+    expect(screen.getByRole("button", { name: "새로고침" })).toBeDisabled();
+    fireEvent.submit(screen.getByRole("button", { name: "조회" }).closest("form")!);
+    expect(await screen.findByText("필수 입력: 종목 코드 값을 입력하세요.")).toBeInTheDocument();
+    expect(fetch).toHaveBeenCalledTimes(1);
+  });
+
+  it("fetches analysis once a required parameter has a valid submitted value", async () => {
+    const fetch = vi.fn().mockResolvedValueOnce(requiredFeaturesResponse()).mockResolvedValueOnce(resultResponse("symbol-scan"));
+    vi.stubGlobal("fetch", fetch);
+    render(<AnalysisExplorer instrument={samsung} active />);
+
+    const input = await screen.findByLabelText("종목 코드");
+    fireEvent.change(input, { target: { value: "005930" } });
+    fireEvent.click(screen.getByRole("button", { name: "조회" }));
+
+    await waitFor(() => expect(fetch).toHaveBeenCalledTimes(2));
+    expect(String(fetch.mock.calls[1][0])).toContain("symbol=005930");
   });
 
   it("aborts a stale feature result, persists an explicit selection, and displays only the latest response", async () => {

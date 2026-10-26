@@ -30,6 +30,14 @@ function launch(code: string) {
 }
 
 describe("workstation toolbar integration", () => {
+  it("does not offer unavailable BRK.B as a quick preset", async () => {
+    render(<TradingDesk2 />);
+    await waitFor(() => expect(screen.getByTestId("layout-components")).toBeInTheDocument());
+
+    expect(screen.getByRole("button", { name: "NVDA" })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "BRK.B" })).not.toBeInTheDocument();
+  });
+
   it("keeps the selected symbol on same-market click and restores KR/US history", async () => {
     render(<TradingDesk2 />);
     await waitFor(() => expect(screen.getByTestId("layout-components")).toBeInTheDocument());

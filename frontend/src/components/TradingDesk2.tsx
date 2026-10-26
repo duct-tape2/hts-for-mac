@@ -57,15 +57,6 @@ const quickSymbols = [
     quoteVenue: "ND",
     currency: "USD",
   },
-  {
-    market: "US",
-    stkCd: "BRK.B",
-    stkNm: "Berkshire Hathaway B",
-    stexTp: "NY",
-    listingVenue: "NYSE",
-    quoteVenue: "NY",
-    currency: "USD",
-  },
 ] as const;
 
 
