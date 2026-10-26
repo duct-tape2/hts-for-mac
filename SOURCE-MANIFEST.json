@@ -101,7 +101,7 @@
   "frontend/src/components/OrderBook.tsx": "73190ab5405b4c1df1475bffbdcb9ebf638191ceb3d94e3439758e9bd32abd3a",
   "frontend/src/components/PersonalAnalysisBackup.test.tsx": "906ba45129cb07da0e9025fb0abbf570eab7ede72eb3b7f2437488685010eeee",
   "frontend/src/components/PersonalAnalysisBackup.tsx": "97a9a15a76b14cd3a8521f0c32057b324eb1a2c64557350033904fdebfa711fc",
-  "frontend/src/components/PriceChart.test.tsx": "94f602f3ffc5b9de345d279e08548714cefde6d63b7f35019952301dbc175808",
+  "frontend/src/components/PriceChart.test.tsx": "6aa466a22eb147afe37c87bf86646307e09e3044c62cf73fb9f90483e5645ffa",
   "frontend/src/components/PriceChart.tsx": "eb813f8569d3f1603a86e44f1f9fb089bdc5de585136fdae30adaba850bf634b",
   "frontend/src/components/ScreenLauncher.test.tsx": "17947702c11ae6055df6d54feca6a406ce9a8d74b7fc64af5234eedbaaa80a56",
   "frontend/src/components/ScreenLauncher.tsx": "ad9694adc72fd5d5c2ef714d718b8a7132494604cc959a73e540cf8992f1d65d",

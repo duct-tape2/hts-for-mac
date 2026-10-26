@@ -123,8 +123,7 @@ describe("PriceChart", () => {
   it("sets the volume pane to the persisted stretch ratio instead of its transient initial pixel height", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(json(chart(apple, "volume pane ratio"))));
     render(createElement(PriceChart, { instrument: apple, quote: null, onSelectPrice: vi.fn(), active: true, preferences: { volumeRatio: 0.26 } }));
-    await screen.findByText(/volume pane ratio/);
-    expect(lightweightCharts.charts[0].panes[1].setStretchFactor).toHaveBeenLastCalledWith(expect.closeTo(0.26 / 0.74));
+    await waitFor(() => expect(lightweightCharts.charts[0]?.panes[1].setStretchFactor).toHaveBeenLastCalledWith(expect.closeTo(0.26 / 0.74)));
   });
 
   it("updates the final bar only from a valid, same-bucket live trade, never a mid-price or snapshot", async () => {
@@ -306,8 +305,7 @@ describe("PriceChart", () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(json(payload)));
     const onPreferencesChange = vi.fn();
     render(createElement(PriceChart, { instrument: apple, quote: null, onSelectPrice: vi.fn(), active: true, onPreferencesChange }));
-    await screen.findByText(/extended indicators/);
-    expect(lightweightCharts.charts.at(-1)?.series).toHaveLength(11);
+    await waitFor(() => expect(lightweightCharts.charts.at(-1)?.series).toHaveLength(11));
 
     const toggle = screen.getByText("확장 지표 · 최신값");
     const details = toggle.closest("details");
