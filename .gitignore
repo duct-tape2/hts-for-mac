@@ -20,6 +20,7 @@ node_modules/
 frontend/.next/
 frontend/out/
 npm-debug.log*
+.cache/npm/
 
 # os / ide
 .DS_Store
