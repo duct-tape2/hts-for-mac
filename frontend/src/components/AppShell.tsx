@@ -18,9 +18,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     <div className="terminal-shell" data-hts-theme="classic">
       <header className="terminal-header">
         <Link href="/" className="terminal-brand">
-          <span className="terminal-logo">M</span>
+          <span className="terminal-logo">H</span>
           <strong>
-            MOA <span>DESK</span>
+            HTS <span>for Mac</span>
           </strong>
         </Link>
         <span className="terminal-title">주식 종합 · 분석 워크스테이션</span>

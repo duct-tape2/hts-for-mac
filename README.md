@@ -1,14 +1,14 @@
-# Moa Desk
+# HTS for Mac
 
-**맥에서도 HTS의 주요 조회 기능을 사용할 수 있는 로컬 웹앱입니다.**
+**윈도우 HTS처럼 쓰는 맥용 주식 조회·분석 화면입니다.**
 
 국내·미국주식의 시세·호가·차트·관심종목을 한 화면에 모아 봅니다. 컴퓨터에 설치해 실행한 뒤 브라우저에서 사용하는 방식이며, 지원되는 조회 기능을 쓰기 위해 Windows나 Parallels를 실행할 필요가 없습니다.
 
 **조회·분석 전용입니다. 매수·매도·정정·취소·자동매매·환전·이체·개인 계좌 조회는 제공하지 않습니다. 키움증권 공식 제품이나 제휴 서비스가 아닙니다.**
 
-![국내·미국 차트를 함께 배치한 Moa Desk 화면. 합성 데이터 시연입니다.](docs/media/moa-desk-poster.png)
+![국내·미국 차트를 함께 배치한 HTS for Mac 화면. 합성 데이터 시연입니다.](docs/media/hts-for-mac-poster.png)
 
-[약 78초 기능 시연 영상(MP4, 약 4MB)](docs/media/moa-desk-demo.mp4) · [한국어 자막(VTT)](docs/media/moa-desk-demo.ko.vtt) · [최신 릴리스](https://github.com/duct-tape2/moa-desk/releases)
+[약 79초 기능 시연 영상(MP4, 약 4.5MB)](docs/media/hts-for-mac-demo.mp4) · [한국어 자막(VTT)](docs/media/hts-for-mac-demo.ko.vtt) · [최신 릴리스](https://github.com/duct-tape2/hts-for-mac/releases)
 
 영상과 위 이미지는 실제 앱을 **합성 테스트 데이터**로 조작한 모습입니다. 실시간 시세나 투자 성과를 보여주는 영상이 아닙니다. 소리가 없는 영상이며, GitHub 파일 화면에서 재생되지 않으면 View raw로 내려받아 재생하세요.
 
@@ -50,8 +50,8 @@
 macOS, Git, [uv](https://docs.astral.sh/uv/), npm과 Node.js(22.13 이상의 22.x, 24.x, 26 이상 중 하나. 23.x·25.x는 지원하지 않음)가 필요합니다. 실행기는 PATH의 python3로 실행되고, 백엔드용 Python 3.13은 uv가 준비합니다.
 
 ```bash
-git clone https://github.com/duct-tape2/moa-desk.git
-cd moa-desk
+git clone https://github.com/duct-tape2/hts-for-mac.git
+cd hts-for-mac
 ./scripts/setup.sh
 ./dev.sh
 ```
@@ -106,9 +106,9 @@ npm --prefix frontend run build
 
 ## 확인한 범위
 
-v0.23.0-rc.2 기준으로 Python 360개·프런트엔드 296개, 총 656개 테스트와 타입 검사·빌드·CI가 통과했습니다. 릴리스 검증 과정에서 실제 키로 삼성전자·SK하이닉스·AAPL의 핵심 시세·호가·차트 수신과 다중 종목 연결을 확인했습니다. 이는 해당 릴리스의 검증 기록이며, 모든 기능이나 모든 맥에서의 동작을 보장하는 수치는 아닙니다.
+v0.23.0-rc.2 기준으로 Python 360개·프런트엔드 296개, 총 656개 테스트와 타입 검사·빌드·CI가 통과했습니다. 릴리스 검증 과정에서 실제 키로 삼성전자·SK하이닉스·AAPL의 핵심 시세·호가·차트 수신과 다중 종목 연결을 확인했습니다. v0.23.0-rc.2까지는 Moa Desk라는 이름으로 배포했습니다. 이는 해당 릴리스의 검증 기록이며, 모든 기능이나 모든 맥에서의 동작을 보장하는 수치는 아닙니다.
 
-[RC2 검증 결과](https://github.com/duct-tape2/moa-desk/releases/tag/v0.23.0-rc.2) · [해당 커밋 CI](https://github.com/duct-tape2/moa-desk/actions/runs/40252345421)
+[RC2 검증 결과](https://github.com/duct-tape2/hts-for-mac/releases/tag/v0.23.0-rc.2) · [해당 커밋 CI](https://github.com/duct-tape2/hts-for-mac/actions/runs/40252345421)
 
 ## 기반 프로젝트와 출처
 

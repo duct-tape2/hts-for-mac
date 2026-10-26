@@ -16,8 +16,8 @@ npm --version
 uv가 잠금 파일에 맞는 Python 3.13 환경을 준비한다. 기존 `.venv`, `node_modules`, 빌드 결과 또는 내려받은 SDK 소스를 복사하지 않는다. 공식 SDK 런타임은 `backend/uv.lock`에 고정된 공개 PyPI `kwcli` 패키지로 설치된다. Apple Silicon과 Intel의 실제 다른 기기 실행 검증은 아직 하지 않았다.
 
 ```bash
-git clone https://github.com/duct-tape2/moa-desk.git
-cd moa-desk
+git clone https://github.com/duct-tape2/hts-for-mac.git
+cd hts-for-mac
 ./scripts/setup.sh
 npm --prefix frontend run build
 python3 scripts/run_local.py --environment real

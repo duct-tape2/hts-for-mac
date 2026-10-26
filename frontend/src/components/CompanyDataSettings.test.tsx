@@ -62,7 +62,7 @@ describe("CompanyDataSettings", () => {
     fireEvent.submit(screen.getByRole("button", { name: "SEC 연락처 저장" }).closest("form")!);
     expect(await screen.findByRole("alert")).toHaveTextContent("앱 이름과 실제 연락 이메일");
     expect(request.mock.calls.filter(([path, init]) => path !== "/api/auth/status" && path !== "/api/company-credentials/status" && (init as RequestInit | undefined)?.method === "POST")).toHaveLength(0);
-    expect(validateCompanySecUserAgent("Moa Desk support@example.invalid")).toBe(true);
+    expect(validateCompanySecUserAgent("HTS-for-Mac support@example.invalid")).toBe(true);
     expect(validateCompanySecUserAgent("모아 데스크 support@example.invalid")).toBe(false);
     expect(validateCompanySecUserAgent("Moa\r\nDesk support@example.invalid")).toBe(false);
     expect(validateCompanyDartKey(key)).toBe(true);

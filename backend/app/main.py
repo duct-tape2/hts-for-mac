@@ -92,7 +92,7 @@ async def lifespan(_app: FastAPI):
         await asyncio.to_thread(credential_manager.stop)
 
 
-app = FastAPI(title="Moa Desk 조회 전용 시장 API", version=VERSION, lifespan=lifespan)
+app = FastAPI(title="HTS for Mac 조회 전용 시장 API", version=VERSION, lifespan=lifespan)
 app.include_router(capture_router)
 app.include_router(analysis_router)
 app.add_middleware(TrustedHostMiddleware, allowed_hosts=[*_LOCAL_HOSTS, *( ["testserver"] if _test_runtime() else [])])
